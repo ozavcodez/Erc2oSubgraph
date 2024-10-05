@@ -1,0 +1,8 @@
+{
+  "scroll-sepolia": {
+    "ERC20Token": {
+      "address": "0x6107f49E3DB8D15783083446d53CE15Bd15fDe0F",
+      "startBlock": 6873112
+    }
+  }
+}

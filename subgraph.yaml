@@ -1,0 +1,29 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ERC20Token
+    network: scroll-sepolia
+    source:
+      address: "0x6107f49E3DB8D15783083446d53CE15Bd15fDe0F"
+      abi: ERC20Token
+      startBlock: 6873112
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Transfer
+      abis:
+        - name: ERC20Token
+          file: ./abis/ERC20Token.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/erc-20-token.ts
