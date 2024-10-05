@@ -52,14 +52,14 @@ export function handleTransfer(event: Transfer): void {
 
 export function handleApproval(event: Approval): void {
   let owner = loadOrCreateUser(event.params.owner.toHexString());
-  let spender = loadOrCreateUser(event.params.spender.toHexString());
+  let spender = loadOrCreateUser(event.params.to.toHexString());
   let token = loadOrCreateToken(event.address.toHexString());
 
   // Create a unique identifier for the approval (owner + spender + token)
   let approvalId = event.params.owner
     .toHexString()
     .concat("-")
-    .concat(event.params.spender.toHexString())
+    .concat(event.params.to.toHexString())
     .concat("-")
     .concat(event.address.toHexString());
 
